@@ -4,7 +4,7 @@
 import sqlite3
 
 def merge_intervals(intervals):
-    """Merge overlapp intervals and return total covered duration"""
+    #merges overlapp intervals and returns the total covered duration
     valid = [(s, e) for s, e in intervals if s is not None and e is not None and e > s]
     if not valid:
         return 0
