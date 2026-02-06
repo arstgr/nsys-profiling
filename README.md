@@ -1,6 +1,22 @@
 # nsys-profiling
 Profiling workflow for AI &amp; HPC workloads on NVIDIA GPUs 
 
+Nvidia's nsight system is used for profiling workloads on NVIDIA's GPUs. The profiler can be run using
+```
+nsys profile <args> <exec> <parameters>
+```
+where the output is one (or several) nsys representation files. 
+
+To view a profiling summary, try
+```
+nsys stats <>.nsys-rep 
+```
+Besides a summary table of the profiles, this also exports a sqlite database that can be used for further analyses using sql queries. Script './scripts/analyze_nsys_finegrained.py' provides a basic analysis of the results, demonstrating a breakdown of the performance into compute, communication and memory operations. 
+
+To obtain this breakdown, adjust the name of the sql file obtained from your nsys representation file, at the last line of './scripts/analyze_nsys_finegrained.py', 'analyze_distributed_performance("profile_16124_0_0.sqlite")", then try
+```
+python3 ./scripts/analyze_nsys_finegrained.py
+```
 
 ## Extract details from NCCL logs
 NCCL logs can also contain important details about the initialization, topology, and communication patterns of the workload. To export such details, the training or simulation should be run with 
