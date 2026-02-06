@@ -79,15 +79,15 @@ def analyze_distributed_performance(db_path):
     gpu_idle_ns = total_time_ns - gpu_active_ns
 
     # overlap times
-    # compute n communication
+    # compute and communication
     comp_comm_union = merge_intervals(comm_kernels + compute_kernels)
     comp_comm_overlap = (compute_time_ns + comm_time_ns) - comp_comm_union
 
-    # compute n mem
+    # compute and mem
     comp_mem_union = merge_intervals(compute_kernels + mem_intervals)
     comp_mem_overlap = (compute_time_ns + mem_time_ns) - comp_mem_union
 
-    #communication n mem
+    #communication and mem
     comm_mem_union = merge_intervals(comm_kernels + mem_intervals)
     comm_mem_overlap = (comm_time_ns + mem_time_ns) - comm_mem_union
 
@@ -102,9 +102,9 @@ def analyze_distributed_performance(db_path):
     print(f"{'Communication (NCCL kernels)':<35} | {comm_time_ns / to_sec:15.6f}")
     print(f"{'Memory ops (memcpy/memset)':<35} | {mem_time_ns / to_sec:15.6f}")
     print("-" * 60)
-    print(f"{'Compute ∩ Comm overlap':<35} | {comp_comm_overlap / to_sec:15.6f}")
-    print(f"{'Compute ∩ Mem overlap':<35} | {comp_mem_overlap / to_sec:15.6f}")
-    print(f"{'Comm ∩ Mem overlap':<35} | {comm_mem_overlap / to_sec:15.6f}")
+    print(f"{'Compute and Comm overlap':<35} | {comp_comm_overlap / to_sec:15.6f}")
+    print(f"{'Compute and Mem overlap':<35} | {comp_mem_overlap / to_sec:15.6f}")
+    print(f"{'Comm and Mem overlap':<35} | {comm_mem_overlap / to_sec:15.6f}")
     print("-" * 60)
 
     if total_time_ns > 0:
