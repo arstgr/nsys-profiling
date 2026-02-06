@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2026 Amirreza Rastegari
+# Licensed under the MIT License
 logfile="$1"
 
 awk '
