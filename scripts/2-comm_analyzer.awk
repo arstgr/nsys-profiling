@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Copyright (c) 2026 Amirreza Rastegari
+# Licensed under the MIT License
 ##note use like ./2-comm_analyzer.awk nccl-45-50.log > nccl-sizes-45-50.log
 
 fl=$1
