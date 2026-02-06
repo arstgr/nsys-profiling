@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright (c) 2026 Amirreza Rastegari
-# Licensed under the MIT License
+# Licensed under the MIT License.
 ##note use like ./2-comm_analyzer.awk nccl-45-50.log > nccl-sizes-45-50.log
 
 fl=$1
@@ -26,7 +26,7 @@ awk '{
     }
   }
 
-  #map numeric dtype (I got it from documentation for NCCL 2.28, usually doesn't change) to element size
+  ##map numeric dtype to element size, this was extracted from nccl 2.28 documentations
   # 0 ncclInt8/ncclChar
   # 1  ncclUint8
   # 2 ncclInt32/ncclInt

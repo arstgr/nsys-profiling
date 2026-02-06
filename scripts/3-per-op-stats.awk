@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Copyright (c) 2026 Amirreza Rastegari
+# Licensed under the MIT License.
 ##note run like ./3-per-op-stats.awk nccl-sizes-45-50.log
 
 fl=$1
