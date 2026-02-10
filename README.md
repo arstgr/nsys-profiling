@@ -22,7 +22,7 @@ python3 ./scripts/analyze_nsys_finegrained.py
 NCCL logs can also contain important details about the initialization, topology, and communication patterns of the workload. To export such details, the training or simulation should be run with 
 ```
 export NCCL_DEBUG=INFO
-export NCCL_DEBUG_SUBSYSTEMS=COLL,NET,NVLS
+export NCCL_DEBUG_SUBSYS=COLL,NET,NVLS
 export NCCL_DEBUG_TIME=1
 ```
 present in the environment. From the NVIDIA NCCL documentation, NCCL_DEBUG SUBSYSTEM allows the user to filter the output of NCCL_DEBUG into various subsystems. The supported subsystems are INIT, COLL, P2P, SHM, NET, GRAPH, TUNING, ENV, ALLOC, CALL, PROXY, NVLS, BOOTSTRAP, REG, PROFILE, RAS and ALL.
