@@ -56,5 +56,12 @@ Additionally, you can extract basic data regarding the average training step siz
 ./scripts/avg_step_timing_tflops.awk nccl.log
 ```
 
+## MPI Message logger
+To profile the mpi messages, a simple way is to use PMPI, by writing a library wrapper which replaces the calls to MPI functions with calls to PMPI. A sample of this wrapper is presented in 'codes' directory. To compile
+```
+mpicc -fPIC -shared codes/mpi_msg_logger.c -o libmpi_msg_logger.so
+```
+The resulting library then, 'libmpi_msg_logger.so' is used to overwrite calls to MPI, using 'LD_PRELOAD'. 
+
 Maintained by Amirreza Rastegari
 Licensed under the MIT License
