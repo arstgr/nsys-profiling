@@ -67,8 +67,6 @@ def analyze_nvidia_hpl(db_path):
         conn.close()
         return
 
-    # 2. Pull every kernel with its demangled + short name so we can classify compute vs NCCL.
-    #    Checking both name fields avoids leaking NCCL kernels into the compute bucket.
     query = """
         SELECT k.start, k.end, sd.value, ss.value
         FROM CUPTI_ACTIVITY_KIND_KERNEL k
